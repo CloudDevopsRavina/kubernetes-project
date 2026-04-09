@@ -49,6 +49,10 @@ You can follow same procedure in the official  AWS document [Getting started wit
       --region us-east-1 \
    --node-type t2.small \
 
+ eksctl create cluster --name naresh \
+      --region ap-south-1 \
+   --node-type c7i-flex.large \ 
+
 
 5. To delete the EKS clsuter 
    ```sh 
