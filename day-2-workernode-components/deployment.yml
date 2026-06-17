@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: nginx
-        image: image: 383946777397.dkr.ecr.ap-south-1.amazonaws.com/simple-java-maven-app:0
+        image: 383946777397.dkr.ecr.ap-south-1.amazonaws.com/simple-java-maven-app:2
         ports:
         - containerPort: 80 
