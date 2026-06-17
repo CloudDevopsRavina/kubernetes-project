@@ -1,36 +1,37 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: nginx-deployment
+  name: simple-java-app
   labels:
-    app: nginx
+    app: simple-java-app
 spec:
-  replicas: 5
+  replicas: 3
   selector:
     matchLabels:
-      app: nginx
+      app: simple-java-app
   template:
     metadata:
       labels:
-        app: nginx
+        app: simple-java-app
     spec:
       containers:
-      - name: nginx
-        image: 383946777397.dkr.ecr.ap-south-1.amazonaws.com/simple-java-maven-app:3
-        ports:
-        - containerPort: 80 
+        - name: simple-java-app
+          image: 383946777397.dkr.ecr.ap-south-1.amazonaws.com/simple-java-maven-app:3
+          ports:
+            - containerPort: 8080
+          imagePullPolicy: Always
+
 ---
+
 apiVersion: v1
 kind: Service
 metadata:
-  name: nginx
-  labels:
-    app: my-app-lb
+  name: simple-java-app-service
 spec:
   type: LoadBalancer
-  ports:
-  - port: 80
-    targetPort: 80
-    protocol: TCP
   selector:
-    app: nginx
+    app: simple-java-app
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
