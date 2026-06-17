@@ -19,3 +19,18 @@ spec:
         image: 383946777397.dkr.ecr.ap-south-1.amazonaws.com/simple-java-maven-app:3
         ports:
         - containerPort: 80 
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx
+  labels:
+    app: my-app-lb
+spec:
+  type: nginx
+  ports:
+  - port: 80
+    targetPort: 80
+    protocol: TCP
+  selector:
+    app: nginx
